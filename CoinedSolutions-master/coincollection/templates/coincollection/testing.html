@@ -1,0 +1,244 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+
+{% load static %}
+
+
+
+
+<h1>TEST-for country.html to include subcategories in listing</h1>
+
+
+<h1>TEST-Start 3-------------------------------</h1>
+
+		<h3>Münzen nach Ländern</h3></br>
+		<h3>{{ catdata.title }}</h3></br>
+
+{% for post_all in all_products %}
+{% for post_spec in products %}
+	<article class="media content-section">
+
+      	{% if post_all.category.parent.title  == catdata.title %}
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land1: {{ post_all.category.title }}</p>
+  			<p>Land2: {{ post_all.category.parent.title }}</p>
+		    </div>
+		{% endif %}
+
+
+      	{% if post_all.category.title  == catdata.title %}
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land3: {{ post_all.category.title }}</p>
+  			<p>Land4: {{ post_all.category.parent.title }}</p>
+		    </div>
+		{% endif %}
+
+		</article>
+{% endfor %}
+{% endfor %}
+
+<h1>TEST-Ende 3-------------------------------</h1>
+
+
+
+
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+
+
+
+
+</br>
+
+<h1>TEST-Start 2---------------------------------</h1>
+
+		<h3>Münzen nach Ländern</h3></br>
+		<h3>{{ catdata.title }}</h3></br>
+
+{% for post_all in all_products %}
+{% for post_spec in products %}
+	<article class="media content-section">
+
+      	{% if post_all.category.parent.title  == catdata.title %}
+
+        
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land1: {{ post_all.category.title }}</p>
+  			<p>Land2: {{ post_all.category.parent.title }}</p>
+		    </div>
+
+
+		{% endif %}
+
+
+      	{% if post_all.category.title  == catdata.title %}
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land3: {{ post_all.category.title }}</p>
+  			<p>Land4: {{ post_all.category.parent.title }}</p>
+		    </div>
+		{% endif %}
+
+		</article>
+{% endfor %}
+{% endfor %}
+
+<h1>TEST-Ende 2---------------------------------</h1>
+
+
+
+
+
+
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>TEST-Start 1---------------------------------</h1>
+
+		<h3>Münzen nach Ländern Test</h3></br>
+		<h3>{{ catdata.title }}</h3></br>
+
+{% for post in all_products %}
+	<article class="media content-section">
+		<div class="media-body">
+		    <div class="article-metadata">
+			    <a href="/category/{{ post.category.slug }}/{{ post.id }}"  >{{ post.title }}</a></br>
+			</div>
+			<p>Land1: {{ post.category.title }}</p>
+  			<p>Land2: {{ post.category.parent.title }}</p>
+		    </div>
+			<img class="rounded-circle article-img" src="{{ post.image.url }}">
+		</article>
+{% endfor %}
+
+<h1>TEST-Ende 1---------------------------------</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+<h1>-</h1></br>
+
+
+
+
+</br>
+
+<h1>SAVE!   TEST-Start 2---------------------------------</h1>
+
+		<h3>Münzen nach Ländern</h3></br>
+		<h3>{{ catdata.title }}</h3></br>
+
+{% for post_all in all_products %}
+{% for post_spec in products %}
+	<article class="media content-section">
+
+      	{% if post_all.category.parent.title  == catdata.title %}
+
+        
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land1: {{ post_all.category.title }}</p>
+  			<p>Land2: {{ post_all.category.parent.title }}</p>
+		    </div>
+
+
+		{% endif %}
+
+
+      	{% if post_all.category.title  == catdata.title %}
+			<div class="media-body">
+		    <div class="article-metadata">
+			    <h4>{{ post_all.title }}</h4></br>
+			</div>
+			<p>Land3: {{ post_all.category.title }}</p>
+  			<p>Land4: {{ post_all.category.parent.title }}</p>
+		    </div>
+		{% endif %}
+
+		</article>
+{% endfor %}
+{% endfor %}
+
+<h1>SAVE!  TEST-Ende 2---------------------------------</h1>
+
+
+
+
+
+
+
+		<h3>Münzen nach Ländern</h3></br>
+		<h3>{{ catdata.title }}</h3></br>
+
+{% for post in products %}
+	<article class="media content-section">
+		<div class="media-body">
+		    <div class="article-metadata">
+			    <a href="/category/{{ post.category.slug }}/{{ post.id }}"  >{{ post.title }}</a></br>
+			</div>
+      	{% if not post.category.parent.title  %}
+			<p>Land: {{ post.category.title }}</p>
+  		{% else %}
+  			<p>Land: {{ post.category.parent.title }}</p>
+        {% endif %}
+		 	<p>Münzart: {{ post.coin_sort_field }}</p>
+ 			<p>Prägungsbuchstabe: {{ post.coin_choice_field }}</p>
+		    </div>
+			<img class="rounded-circle article-img" src="{{ post.image.url }}">
+		</article>
+{% endfor %}
+{% endblock content %}

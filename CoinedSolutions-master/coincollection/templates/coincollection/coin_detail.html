@@ -1,0 +1,42 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+	<article class="media content-section">
+		<div class="media-body">
+<h1>{{ product.title   }}</h1>
+</div>
+</article>
+
+
+	<article class="media content-section">
+		<div class="media-body">
+ {% if not product.category.parent.title %}
+ 	<p>Land: {{ product.category.title }}</p>
+ {% else %}
+		<p>Land: {{ product.category.parent.title  }}</p>
+ 		<p>Bundesland: {{ product.category.title }}</p>
+ {% endif %}
+
+
+ <p>Beschreibung: {{ product.description  }}</p>
+
+ {% if product.coin_choice_field != "NA" %}
+ 	 <p>Prägungsbuchstabe: {{ product.coin_choice_field }}</p>
+
+ {% endif %}
+
+
+ <!--p>Prägungsbuchstabe: {{ product.coin_choice_field }}</p-->
+ <p>Münzart: {{ product.coin_sort_field  }}</p>
+ <p>Jahr: {{ product.year  }}</p>
+ <p>Erhalten am: {{ product.date_found  }}</p>
+ </div>
+</article>
+	<article class="media content-section">
+		<div class="media-body">
+
+<img  class="img-fluid"  src="{{ product.image.url }}">
+ </div>
+</article>
+  </br></br></br></br>
+
+{% endblock content %}

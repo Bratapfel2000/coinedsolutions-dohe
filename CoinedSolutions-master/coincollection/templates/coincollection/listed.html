@@ -1,0 +1,42 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+
+{% load static %}
+<article class="media content-section">
+	<div class="media-body">
+		<h1>Zweieurosondermünztabelle</h1>
+	</div>
+</article>
+
+<table border = "1" cellpadding = "5" cellspacing = "5" id="myTable">
+	<th onclick="sortTable_2()">#</th>
+	<th colspan="1" onclick="sortTable(1)">Land</th>
+	<th colspan="1" onclick="sortTable(2)">Subland</th>
+	<th onclick="sortTable(3)">Titel</th>
+	<th onclick="sortTable(4)">Münzart</th>
+	<th onclick="sortTable_jahr()">Jahr</th>
+	<th onclick="sortTable(6)">lit.</th>    
+	<th onclick="sortTable(7)">Bild</th>
+
+	{% for i in all_products%}
+		<tr>
+		<td>{{i.id}}</td>
+		{% if not i.category.parent.title %}
+			<td>{{i.category.title}}</td>
+			<td>{{i.category.parent.title}}</td>
+		{% else %}
+			<td>{{i.category.parent.title}}</td>
+			<td>{{i.category.title}}</td>
+		{% endif %}
+		<td>{{i.title}}</td>
+		<td>{{ i.coin_sort_field  }}</td>
+		<td>{{ i.year  }}</td>
+		<td>{{ i.coin_choice_field  }}</td>
+		<td><a href="/category/{{ i.category.slug }}/{{ i.id }}"  ><img class="rounded-circle article-img" style="height:50px;width:50px" src="{{ i.image.url }}"></a></td>
+		</tr>
+	{% endfor %}
+</table>
+
+</br></br>
+
+{% endblock content %}

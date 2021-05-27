@@ -1,0 +1,35 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+
+{% load static %}
+
+	<article class="media content-section">
+		<div class="media-body">
+			<h3>Münzen aus {{ catdata.title }}</h3></br>
+		</div>
+	</article>
+
+
+
+{% for post in products %}
+	<article class="media content-section">
+		<div class="media-body">
+		    <div class="article-metadata">
+			    <a href="/category/{{ post.category.slug }}/{{ post.id }}"  >{{ post.title }}</a></br>
+
+			</div>
+      
+      {% if not post.category.parent.title  %}
+			 <p>Land: {{ post.category.title }}</p>
+  {% else %}
+  <p>Land: {{ post.category.parent.title }}</p>
+        {% endif %}
+		    <p>Münzart: {{ post.coin_sort_field }}</p>
+ 			<p>Prägungsbuchstabe: {{ post.coin_choice_field }}</p>
+		    </div>
+			<img class="rounded-circle article-img" style="height:120px;width:120px" src="{{ post.image.url }}">
+	</article>
+{% endfor %}
+
+
+{% endblock content %}

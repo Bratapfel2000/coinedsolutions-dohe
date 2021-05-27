@@ -1,0 +1,33 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+
+
+
+<div class="row">
+      {% for post in all_products %}
+            <div class="col-md-4">
+                    <div class="card">
+                       <div class="card-body">
+                            <a href="/category/{{ post.category.slug }}/{{ post.id }}"  ><img class="rounded-circle card-img-top" src="{{ post.image.url }}"></a></br></br>
+                                 
+                                        <h4 class="card-title"><a href="/category/{{ post.category.slug }}/{{ post.id }}"  >{{ post.title }}</a></h4>
+                                        {% if not post.category.parent.title  %}
+                                        <p>{{ post.category.title }},  {{ post.year }}. <a href="#">{{ post.coin_sort_field }}</p>
+                                        {% else %}
+                                        <p>{{ post.category.parent.title }},  {{ post.year }}. <a href="#">{{ post.coin_sort_field }}</a></p>
+                                        {% endif %}
+                                  </div>
+                    </div></br>
+
+            </div>
+            <!-- if last column in row -->
+            {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+            {% endif %}
+      {% endfor %}
+</div>
+
+
+
+
+{% endblock content %}
+

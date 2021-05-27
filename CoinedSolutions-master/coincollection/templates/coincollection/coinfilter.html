@@ -1,0 +1,49 @@
+{% extends "coincollection/base.html" %}
+{% block content %}
+
+<article class="media content-section">
+	  <div class="media-body">
+		<h1>Münzfilter</h1>
+		</div>
+</article>
+
+
+
+
+
+<article class="media content-section">
+  <div class="media-body">
+        <form method="get">
+          {{ myFilter.form }}
+          <button class="btn btn-primary" type="submit">search</button>
+        </form>
+
+<div class="media-body">
+{% for post in order %}
+  <article class="media content-section" style="background: #e6e6ff">
+    <div class="media-body">
+        <div class="article-metadata">
+          <a href="/category/{{ post.category.slug }}/{{ post.id }}"  >{{ post.title }}</a>
+      </div>
+
+            {% if not post.category.parent.title  %}
+              <p>Land: {{ post.category.title }}</p>
+            {% else %}
+              <p>Land: {{ post.category.parent.title }}</p>
+            {% endif %}
+
+        <p>Münzart: {{ post.coin_sort_field }}</p>
+        <p>Bauhjar: {{ post.year }}</p>
+      <p>Prägungsbuchstabe: {{ post.coin_choice_field }}</p>
+        </div>
+      <img class="rounded-circle article-img"  style="height:100px;width:100px"  src="{{ post.image.url }}">
+    </article>
+{% endfor %}
+</div>
+
+
+
+  </div>
+</article>
+
+{% endblock content %}
