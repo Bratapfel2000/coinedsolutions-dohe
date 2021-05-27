@@ -34,7 +34,47 @@
 	BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 8.)  create storage.py in settings folder
-9.)
+
+9.) AWS
+9.a) go to AWS S3 and create new bucket abc123
+	scroll down a bit, allow all public access
+9.b) IAM
+	Policies: Create new Policiy or add this json:
+		{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::abc123",
+                "arn:aws:s3:::abc123/*"
+            ]
+        }
+    ]
+}
+
+	give a name: coineddohe-s3
+9.c) create new user: coineddoheuser with Programmatic access and attach policy from 9.b
+
+10.) pip install django-storages
+     pip install boto3
+
+	update requirements: pip freeze > requirements.txt 
+
+     add in settings.py installed apps-> 'storages',
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
