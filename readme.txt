@@ -65,7 +65,9 @@
      add in settings.py installed apps-> 'storages',
 
 
-
+11.) move key etc to storages
+     create static folder in root
+     manage.py collectstatic
 
 
 
