@@ -1,8 +1,8 @@
-Instructions to Deploy Django App via Docker on Heroku
+Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 
 0.) dont show sekret key
 
-1.) copy coinedsolutions to here
+1.) clone https://github.com/Bratapfel2000/CoinedSolutions to local folder
 2.) create pipenv
 3.) set scret key on fake number
 4.) python manage.py makemigrations + python manage.py migrate
