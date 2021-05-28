@@ -70,6 +70,22 @@
      manage.py collectstatic
 
 
+12.) Dockerization
+12.a) pip install gunicorn + safe in requirements.txt
+12.b) create in same folder loke manage.py the Dockerfile. Using Py3.6 because issues with greater versions and psycopg2
+	docker login
+	docker build -t coinedsolutionsdohe:v3 .
+
+	docker run -p 8000:8000 coinedsolutionsdohe:v3
+	http://127.0.0.1:8000/
+
+
+
+
+
+
+
+
 
 
 
