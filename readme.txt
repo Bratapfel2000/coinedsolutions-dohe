@@ -2,10 +2,6 @@ Instructions to Deploy Django App via Docker on Heroku
 
 0.) dont show sekret key
 
-00.) pips:
-	django-environ
-	
-	
 1.) copy coinedsolutions to here
 2.) create pipenv
 3.) set scret key on fake number
