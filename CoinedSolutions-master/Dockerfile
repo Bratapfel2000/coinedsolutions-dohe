@@ -17,8 +17,8 @@ WORKDIR /app
 ADD . .
 
 # for docker deployment 
-EXPOSE 8000
-CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "coinedsolutions.wsgi:application"]
+# EXPOSE 8000
+# CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "coinedsolutions.wsgi:application"]
 
 # for heroku deployment
-# CMD gunicorn coinedsolutions.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn coinedsolutions.wsgi:application --bind 0.0.0.0:$PORT

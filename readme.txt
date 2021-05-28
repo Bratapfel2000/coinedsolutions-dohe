@@ -1,3 +1,5 @@
+Instructions to Deploy Django App via Docker on Heroku
+
 0.) dont show sekret key
 
 00.) pips:
@@ -79,18 +81,26 @@
 	docker run -p 8000:8000 coinedsolutionsdohe:v3
 	http://127.0.0.1:8000/
 
+13.) Push to Dockerhub
+	docker tag coinedsolutionsdohe:v1 paufourdm/coinedsolutionsdohe:latest
+	docker push paufourdm/coinedsolutionsdohe:latest
 
+	https://hub.docker.com/r/paufourdm/coinedsolutionsdohe
 
+14.) update dockerfile for heroku deployment
+	comment out EXPOSE 8000
+	comment out CMD[....]
 
+	comment in
+        CMD gunicorn coinedsolutions.wsgi:application --bind 0.0.0.0:$PORT
 
+15.) get heroku ready via cli
+	 heroku container:login
 
+16.) Delete env variables
 
-
-
-
-
-
-
+	settings.py 
+	#import environ
 
 
 
