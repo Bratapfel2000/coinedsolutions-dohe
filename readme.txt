@@ -101,9 +101,28 @@ Instructions to Deploy Django App via Docker on Heroku
 
 	settings.py 
 	#import environ
+	
+	take out in settings.py 
+	>env = environ.Env()
+	># reading .env file
+	>environ.Env.read_env()
+
+	
+	SECRET_KEY=os.environ.get('SECRET_KEY')
+	DEBUG='False'
+	ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+
+17.) heroku create
+	heroku container:push web --app <herokuappname>
+	
+	add variables here or directly on Heroku:
+	heroku config:add ALLOWED_HOSTS=* -a <herokuappname>
+	heroku config:get ALLOWED_HOSTS -a <herokuappname>
+	
+	heroku container:release -a <herokuappname> web
+	heroku open -a=<herokuappname> 
+	
+	if problem, look on logs
+	heroku logs --tail -a <herokuappname> 
 
 
-
-
-
-pip install django-storages & boto3
