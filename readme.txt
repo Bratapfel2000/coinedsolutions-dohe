@@ -126,13 +126,13 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 	heroku config:add ALLOWED_HOSTS=* -a <herokuappname>
 	heroku config:get ALLOWED_HOSTS -a <herokuappname>
 	
-	# migrate files and create superuser
+	# migrate and create superuser
 	heroku run bash
 	python manage.py migrate
 	createsuperuser
 	
 	# release 
-	heroku container:release -a <herokuappname> web
+	heroku container:release web -a <herokuappname> web
 	heroku open -a=<herokuappname> 
 	
 	# if problem, look on logs
