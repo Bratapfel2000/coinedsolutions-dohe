@@ -3,9 +3,13 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 0.) dont show sekret key
 
 1.) clone https://github.com/Bratapfel2000/CoinedSolutions to local folder
+
 2.) create pipenv
+
 3.) set scret key on fake number
+
 4.) python manage.py makemigrations + python manage.py migrate
+
 5.a) create .env file in same folder than settings.py:
 	SECRET_KEY
 	DEBUG
@@ -69,7 +73,9 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 
 
 12.) Dockerization
+
 12.a) pip install gunicorn + safe in requirements.txt
+
 12.b) create in same folder loke manage.py the Dockerfile. Using Py3.6 because issues with greater versions and psycopg2
 	docker login
 	docker build -t coinedsolutionsdohe:v3 .
@@ -98,7 +104,7 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 	settings.py 
 	#import environ
 	
-	take out in settings.py 
+	# take out in settings.py 
 	>env = environ.Env()
 	># reading .env file
 	>environ.Env.read_env()
@@ -108,6 +114,11 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 	DEBUG='False'
 	ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 
+18.) Postgres
+	heroku addons
+	heroku pg --app ...
+	heroku addons:create heroku-postgresql:hobby-dev --app <herokuappname>
+
 17.) heroku create
 	heroku container:push web --app <herokuappname>
 	
@@ -115,10 +126,15 @@ Instructions to dockerize Django App "CoinedSolutions" and deploy it on Heroku
 	heroku config:add ALLOWED_HOSTS=* -a <herokuappname>
 	heroku config:get ALLOWED_HOSTS -a <herokuappname>
 	
+	# migrate files and create superuser
+	heroku run bash
+	python manage.py migrate
+	createsuperuser
+	
+	# release 
 	heroku container:release -a <herokuappname> web
 	heroku open -a=<herokuappname> 
 	
-	if problem, look on logs
+	# if problem, look on logs
 	heroku logs --tail -a <herokuappname> 
-
 
